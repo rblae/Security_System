@@ -1,5 +1,6 @@
 package actors;
 
+import canvas.Canvas;
 import states.residentStates.NotAtHome;
 import states.residentStates.TrappedInBasement;
 
@@ -18,8 +19,10 @@ public class Burglar {
     public void breakInHouse(Resident[] residents) {
         if (isSuccessful(residents)) {
             imprisonResidents(residents);
+            Canvas.drawBurglar();
             System.out.println("Einbrecher: Geschafft!");
         } else {
+            Canvas.drawPolice();
             System.out.println("Einbrecher: Ich muss fliehen!");
         }
     }

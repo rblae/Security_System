@@ -3,6 +3,7 @@ package client;
 import actors.AlarmSystem;
 import actors.Burglar;
 import actors.Resident;
+import canvas.Canvas;
 import states.residentStates.AtHome;
 
 public class Main {
@@ -38,6 +39,7 @@ public class Main {
             for (Resident resident : residents) {
                 resident.onTimeInterval();
             }
+            Canvas.drawHouse(alarmSystem.getResidentsAtHome());
             System.out.println();
             try {
                 Thread.sleep(1000);

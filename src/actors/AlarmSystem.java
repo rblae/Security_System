@@ -47,4 +47,8 @@ public class AlarmSystem {
     public ActionState getState() {
         return state;
     }
+
+    public int getResidentsAtHome(){
+        return residentsAtHome;
+    }
 }
