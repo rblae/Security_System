@@ -1,8 +1,9 @@
 package states.residentStates;
 
 import actors.Resident;
+import states.State;
 
-public class ResidentStateEmergency extends ResidentState {
+public class ResidentStateEmergency extends State<Resident> {
 
     public ResidentStateEmergency(Resident resident) {
         super(resident);

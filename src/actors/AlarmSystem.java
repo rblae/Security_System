@@ -1,6 +1,6 @@
 package actors;
 
-import states.alarmSystemStates.AlarmSystemState;
+import states.State;
 import states.alarmSystemStates.AlarmSystemStateDailyRoutine;
 
 public class AlarmSystem {
@@ -8,7 +8,7 @@ public class AlarmSystem {
     private static final int RESIDENTS_AT_START = 4;
     private static final int MAX_RESIDENTS = 4;
     private static final int MIN_RESIDENTS = 0;
-    private AlarmSystemState state = new AlarmSystemStateDailyRoutine(this);
+    private State<AlarmSystem> state = new AlarmSystemStateDailyRoutine(this);
     private static final AlarmSystem alarmSystem = new AlarmSystem(RESIDENTS_AT_START);
 
     private AlarmSystem(int residentsAtHome) {
@@ -39,7 +39,7 @@ public class AlarmSystem {
         this.residentsAtHome = residentsAtHome;
     }
 
-    public void setState(AlarmSystemState state) {
+    public void setState(State<AlarmSystem> state) {
         this.state = state;
     }
 

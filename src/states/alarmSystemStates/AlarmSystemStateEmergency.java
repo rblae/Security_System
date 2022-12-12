@@ -1,8 +1,9 @@
 package states.alarmSystemStates;
 
 import actors.AlarmSystem;
+import states.State;
 
-public class AlarmSystemStateEmergency extends AlarmSystemState {
+public class AlarmSystemStateEmergency extends State<AlarmSystem> {
 
     public AlarmSystemStateEmergency(AlarmSystem that) {
         super(that);

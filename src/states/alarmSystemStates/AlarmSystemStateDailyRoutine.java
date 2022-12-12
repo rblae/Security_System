@@ -1,8 +1,9 @@
 package states.alarmSystemStates;
 
 import actors.AlarmSystem;
+import states.State;
 
-public class AlarmSystemStateDailyRoutine extends AlarmSystemState {
+public class AlarmSystemStateDailyRoutine extends State<AlarmSystem> {
 
     public AlarmSystemStateDailyRoutine(AlarmSystem that) {
         super(that);

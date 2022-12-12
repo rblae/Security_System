@@ -1,11 +1,11 @@
 package actors;
 
-import states.residentStates.ResidentState;
+import states.State;
 import states.residentStates.ResidentStateDailyRoutine;
 
 public class Resident {
     private final String name;
-    private ResidentState state;
+    private State<Resident> state;
     private final AlarmSystem alarmSystem;
 
     public enum locations {AT_HOME, NOT_AT_HOME, BASEMENT}
@@ -22,7 +22,7 @@ public class Resident {
         this.getState().onTimeInterval();
     }
 
-    public void setState(ResidentState state) {
+    public void setState(State<Resident> state) {
         this.state = state;
     }
 
@@ -30,7 +30,7 @@ public class Resident {
         return name;
     }
 
-    public ResidentState getState() {
+    public State<Resident> getState() {
         return state;
     }
 
