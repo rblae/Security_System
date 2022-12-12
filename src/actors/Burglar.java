@@ -1,8 +1,6 @@
 package actors;
 
 import canvas.Canvas;
-import states.residentStates.NotAtHome;
-import states.residentStates.TrappedInBasement;
 
 import java.util.Random;
 
@@ -29,7 +27,7 @@ public class Burglar {
 
     private boolean isSuccessful(Resident[] residents) {
         for (Resident resident : residents) {
-            if (resident.getState().equals(NotAtHome.class.getSimpleName())) {
+            if (resident.getLocation() == Resident.locations.NOT_AT_HOME) {
                 return false;
             }
         }
@@ -38,7 +36,7 @@ public class Burglar {
 
     private void imprisonResidents(Resident[] residents) {
         for (Resident resident : residents) {
-            resident.changeState(new TrappedInBasement(resident));
+            resident.setLocation(Resident.locations.BASEMENT);
         }
     }
 }

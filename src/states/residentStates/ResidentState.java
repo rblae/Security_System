@@ -5,14 +5,11 @@ import states.State;
 
 import java.util.Random;
 
-public abstract class ResidentState extends State {
-    protected Resident resident;
+public abstract class ResidentState extends State<Resident> {
     protected Random random;
 
     public ResidentState(Resident resident) {
-        this.resident = resident;
+        super(resident);
         random = new Random();
     }
-
-    public abstract void onTimeInterval();
 }

@@ -1,16 +1,14 @@
 package actors;
 
-import states.actionStates.ActionState;
-import states.actionStates.EmptyHouseActionState;
-import states.actionStates.FullHouseActionState;
-import states.actionStates.StandardActionState;
+import states.alarmSystemStates.AlarmSystemState;
+import states.alarmSystemStates.AlarmSystemStateDailyRoutine;
 
 public class AlarmSystem {
     private int residentsAtHome;
     private static final int RESIDENTS_AT_START = 4;
     private static final int MAX_RESIDENTS = 4;
     private static final int MIN_RESIDENTS = 0;
-    private ActionState state;
+    private AlarmSystemState state = new AlarmSystemStateDailyRoutine(this);
     private static final AlarmSystem alarmSystem = new AlarmSystem(RESIDENTS_AT_START);
 
     private AlarmSystem(int residentsAtHome) {
@@ -25,30 +23,31 @@ public class AlarmSystem {
         residentsAtHome--;
     }
 
-    public void emergency() {
-        if (residentsAtHome == MIN_RESIDENTS) {
-            state = new EmptyHouseActionState();
-        } else if (residentsAtHome != MAX_RESIDENTS) {
-            state = new StandardActionState();
-        } else {
-            state = new FullHouseActionState();
-        }
-        state.takeAction();
+    public void onTimeInterval() {
+        state.onTimeInterval();
     }
 
     public static AlarmSystem getAlarmSystem() {
         return alarmSystem;
     }
 
+    public int getResidentsAtHome() {
+        return residentsAtHome;
+    }
+
     public void setResidentsAtHome(int residentsAtHome) {
         this.residentsAtHome = residentsAtHome;
     }
 
-    public ActionState getState() {
-        return state;
+    public void setState(AlarmSystemState state) {
+        this.state = state;
     }
 
-    public int getResidentsAtHome(){
-        return residentsAtHome;
+    public int getMaxResidents() {
+        return MAX_RESIDENTS;
+    }
+
+    public int getMinResidents() {
+        return MIN_RESIDENTS;
     }
 }
